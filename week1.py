@@ -1,4 +1,11 @@
 import pandas
+
+def strip_name(name):
+	if name.find('Miss.') > -1:
+		return name[name.find('Miss')+6:]
+	else:
+		return 'None'
+
 data = pandas.read_csv('titanic.csv', index_col='PassengerId')
 print(data.head())
 print (data['Sex'].value_counts())
@@ -17,4 +24,12 @@ print(age_mean, age_median)
 print('-' * 40)
 df = data[['SibSp', 'Parch']].corr(method='pearson')
 print(df)
+print('-' * 40)
+females = data.ix[data.Sex == 'female']
+females_names = females['Name']
+print(females_names)
+
+for i in females_names:
+	pass
+	#print(strip_name(i))
 
